@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    // "reactNamespace": "h",
+    // "noEmitHelpers": true,
+    // "importHelpers": true,
+    "moduleResolution": "node",
+    "outDir": "ts-output",
+    "rootDir": "./",
+    "jsx": "react",
+    "pretty": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es5",
+      "dom",
+      "es2015"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,14 @@
+<template>
+    <style>
+        b { color: orange; }
+        ::slotted(p){
+            font-size: 1rem;
+            color:tomato;
+        }
+    </style>
+    <div>
+        <b>${this.smile}</b>
+        <slot></slot>
+        <slot name="description"></slot>
+    </div>
+</template>
