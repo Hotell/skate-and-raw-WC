@@ -4,13 +4,16 @@
     "target": "es5",
     "noImplicitAny": false,
     "sourceMap": true,
-    // "reactNamespace": "h",
-    // "noEmitHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitHelpers": true,
+    // doesn't work with at-loader 2.x
     // "importHelpers": true,
     "moduleResolution": "node",
     "outDir": "ts-output",
     "rootDir": "./",
     "jsx": "react",
+    // doesn't work with at-loader 2.x,3.x + ts@next
+    // "jsxFactory": "h",
     "pretty": true,
     "skipLibCheck": true,
     "lib": [

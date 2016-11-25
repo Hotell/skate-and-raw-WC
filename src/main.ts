@@ -1,5 +1,3 @@
-import 'skatejs-web-components/dist/index';
-import 'skatejs/dist/index-with-deps'
 import './style.css';
 import './app/raw-wc';
 import './app/skate-wc';
@@ -18,6 +16,7 @@ const App = `
 
     <h4>SkateJS WC</h4>
     <x-counter></x-counter>
+    <my-counter></my-counter>
     <x-hello name="fofof"></x-hello>
 `;
 mountPoint.innerHTML = App;
