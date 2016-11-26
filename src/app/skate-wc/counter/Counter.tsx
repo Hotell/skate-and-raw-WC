@@ -1,5 +1,4 @@
-import React from '../jsx';
-import { Component, prop, h, define } from 'skatejs';
+import { Component, prop, h } from 'skatejs';
 
 const sym = Symbol();
 class Counter extends Component {

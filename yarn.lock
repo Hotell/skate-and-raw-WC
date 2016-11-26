@@ -207,13 +207,13 @@ autoprefixer@^6.0.2, autoprefixer@^6.3.1:
     postcss "^5.2.5"
     postcss-value-parser "^3.2.3"
 
-awesome-typescript-loader@2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-2.2.4.tgz#4185d60c035c25515f9c2a747fa5f69b2a001e9e"
+awesome-typescript-loader@^3.0.0-beta.8:
+  version "3.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-3.0.0-beta.8.tgz#2c3bf6d756cfaf0d40ae0437adcc7ec2e515b65b"
   dependencies:
     colors "^1.1.2"
-    enhanced-resolve "^2.2.2"
-    loader-utils "^0.2.6"
+    enhanced-resolve "^2.3.0"
+    loader-utils "^0.2.16"
     lodash "^4.13.1"
     object-assign "^4.1.0"
     source-map-support "^0.4.0"
@@ -1306,7 +1306,7 @@ enhanced-resolve@^0.9.0:
     memory-fs "^0.2.0"
     tapable "^0.1.8"
 
-enhanced-resolve@^2.2.0, enhanced-resolve@^2.2.2:
+enhanced-resolve@^2.2.0, enhanced-resolve@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-2.3.0.tgz#a115c32504b6302e85a76269d7a57ccdd962e359"
   dependencies:
@@ -4674,9 +4674,9 @@ typedarray@~0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.1.tgz#41c2b64472f529331b2055c0424862b44ce58d42"
+typescript@2.2.0-dev.20161126:
+  version "2.2.0-dev.20161126"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.0-dev.20161126.tgz#a73105db486686cb0cabb0a90e2103cad5069334"
 
 uglify-js@2.7.x, uglify-js@~2.7.3:
   version "2.7.4"

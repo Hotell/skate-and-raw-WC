@@ -1,6 +1,6 @@
 import template from './MySmile.html';
 
-class MySmile extends HTMLElement {
+export class MySmile extends HTMLElement {
   private smileContainer: HTMLElement;
   static get is() { return 'my-smile' }
 
@@ -20,7 +20,6 @@ class MySmile extends HTMLElement {
 
   constructor() {
     super();
-    console.log( 'hello from Ctor' );
     // Attach a shadow root to the element.
     const shadowRoot = this.attachShadow({mode: 'open'});
     const instance = importTemplate(template);
@@ -53,7 +52,7 @@ class MySmile extends HTMLElement {
 
 }
 
-window.customElements.define( MySmile.is, MySmile );
+customElements.define( MySmile.is, MySmile );
 
 
 function importTemplate(templateString:string){

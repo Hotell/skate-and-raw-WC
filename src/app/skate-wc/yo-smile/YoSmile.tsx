@@ -1,5 +1,4 @@
-import React from '../jsx';
-import { Component, prop, h, define } from 'skatejs';
+import { Component, h, define } from 'skatejs';
 
 // NOTE: This api doesn't work
 class XCounter extends Component {
