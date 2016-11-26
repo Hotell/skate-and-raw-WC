@@ -35,4 +35,4 @@ class Counter extends Component {
   }
 }
 
-window.customElements.define( Counter.is, Counter );
+customElements.define( Counter.is, Counter );

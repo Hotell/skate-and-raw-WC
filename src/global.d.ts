@@ -32,11 +32,6 @@ interface Document {
 }
 
 interface HTMLElement extends OnConnectedCallback, OnDisconnectedCallback, OnAdoptedCallback, OnAttributeChangedCallback {
-  // custom elements API
-  connectedCallback(): void,
-  disconnectedCallback(): void,
-  attributeChangedCallback( name?: string, oldValue?: any, newValue?: any ): void,
-
 //   // shadow DOM API
 //   shadowRoot: HTMLElement,
 //   attachShadow( { mode:string } ): HTMLElement,

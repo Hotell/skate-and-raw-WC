@@ -15,8 +15,11 @@
     "jsxFactory": "h",
     "pretty": true,
     "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "manual_definitions"
+    ],
     "lib": [
-      "es5",
       "dom",
       "es2015"
     ]
