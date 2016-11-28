@@ -1,8 +1,11 @@
 import { Component, prop, h } from 'skatejs';
 
+type Props = {
+  count?: number
+}
 const sym = Symbol();
-class Counter extends Component {
-
+class Counter extends Component<Props> {
+  _props: Props;
   count = 0;
   static get is() { return 'my-counter' }
   static get props() {
@@ -15,7 +18,6 @@ class Counter extends Component {
   connectedCallback() {
     // Ensure we call the parent.
     super.connectedCallback();
-
     // We use a symbol so we don't pollute the element's namespace.
     this[ sym ] = setInterval(() => ++this.count, 1000 );
   }
@@ -36,3 +38,8 @@ class Counter extends Component {
 }
 
 customElements.define( Counter.is, Counter );
+
+// typed skate vdom with jsx, yay!
+const Foo = () => (
+  <div><Counter count={1}/></div>
+);

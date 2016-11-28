@@ -1,16 +1,25 @@
-import { Component, h, define } from 'skatejs';
+import { Component, h, prop, define } from 'skatejs';
 
-// NOTE: This api doesn't work
+// NOTE: This api doesn't work without __extends override
 class XCounter extends Component {
 
-  static get is(){ return 'x-counter' }
-  renderCallback(){
-    return (<div>Hello</div>)
+  static get is() { return 'x-counter' }
+  static get props() {
+    return {
+      count: prop.number( { attribute: true })
+    };
+  }
+
+  count = 0;
+
+  renderCallback() {
+    return ( <div>Hello {this.count}</div> )
   }
 }
-// NOTE: This registration will throw
-window.customElements.define( XCounter.is, XCounter );
 
+customElements.define( XCounter.is, XCounter );
+
+// this works without __extends override
 define('x-hello', {
   props: {
     name: { attribute: true }

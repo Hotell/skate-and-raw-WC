@@ -6,19 +6,30 @@ export function props(elem: any, data?: PropData): void;
 
 export const emit: (elem: any, eventName: string, eventOptions = {}) => boolean;
 
-export class Component extends HTMLElement {
+interface ComponentProps {
+  children?: JSX.Element[];
+  key?: string;
+}
+interface ComponentLifecycle<PropsType> {
+	 // Custom Elements v1
+  connectedCallback?(): void,
+  disconnectedCallback?(): void,
+  attributeChangedCallback?(name: string, oldValue: any, newValue: any): void,
+
+  // SkateJS
+  updatedCallback?(prev: PropsType): boolean,
+  renderedCallback?(): void,
+}
+interface ComponentConstructor<Props> {
+  new (props?:Props): Component<Props>;
+}
+export class Component<Props> extends HTMLElement implements ComponentLifecycle<Props> {
+  _props: Props & ComponentProps;
   static readonly props: { [name: string]: PropOptions };
   static readonly observedAttributes: string[];
 
-  // Custom Elements v1
-  connectedCallback(): void;
-  disconnectedCallback(): void;
-  attributeChangedCallback(name: string, oldValue: any, newValue: any): void;
-
   // SkateJS
-  updatedCallback(prev: any): boolean
-  renderCallback(): any
-  renderedCallback(): JSX.Element | null
+  abstract renderCallback(): JSX.Element
 }
 
 export function define<C>(name: string, component: C): C;
@@ -26,15 +37,15 @@ export function define<C>(name: string, component: C): C;
 export function define<Proto, Props>(name: string, definition: {
   prototype: Proto;
   props: Props;
-  constructor?(elem: Component & Proto & Props): any;
-  updatedCallback?(elem: Component & Proto & Props, prevProps: { [name: string]: any }): boolean | undefined;
-  renderCallback?(elem: Component & Proto & Props): () => any | undefined;
-  renderedCallback?(elem: Component & Proto & Props): any;
-  connectedCallback?(elem: Component & Proto & Props): any;
-  disconnectedCallback?(elem: Component & Proto & Props): any;
-  attributeChangedCallback?(elem: Component & Proto & Props, data: { name: string, oldValue: any, newValue: any }): any;
+  constructor?(elem: Component<any> & Proto & Props): any;
+  updatedCallback?(elem: Component<any> & Proto & Props, prevProps: { [name: string]: any }): boolean | undefined;
+  renderCallback?(elem: Component<any> & Proto & Props): () => any | undefined;
+  renderedCallback?(elem: Component<any> & Proto & Props): any;
+  connectedCallback?(elem: Component<any> & Proto & Props): any;
+  disconnectedCallback?(elem: Component<any> & Proto & Props): any;
+  attributeChangedCallback?(elem: Component<any> & Proto & Props, data: { name: string, oldValue: any, newValue: any }): any;
   observedAttributes?: string[];
-}): { new(...args: any[]): Component & Proto & Props };
+}): { new(...args: any[]): Component<any> & Proto & Props };
 
 export const symbols: {
   shadowRoot: string | symbol;
@@ -43,8 +54,19 @@ export const symbols: {
 
 export const ready: (elem: HTMLElement, callback: (...args: any[]) => any) => void;
 
-type HOut = () => any;
-type HBuilder = (tag: string | Component, attrs?: { [name: string]: string }, ...children: any[]) => HOut;
+type HOut = JSX.Element;
+type HBuilder<Props> = (
+  nodeName: string | ComponentConstructor<Props>,
+  attributes?: JSX.HTMLAttributes & JSX.SVGAttributes & {[propName: string]: any},
+  ...children?: (JSX.Element|JSX.Element[]|string)[]
+) => HOut;
+
+export interface HNode {
+  nodeName: string | ComponentConstructor<any>;
+  attributes: {[name: string]: any};
+  children: HNode[];
+  key?: string;
+}
 export const h: HBuilder;
 
 export const builder: (...args: string[]) => HBuilder[];

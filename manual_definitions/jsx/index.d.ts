@@ -1,6 +1,190 @@
-import skate from 'skatejs';
+/// <reference types="skatejs" />
+import * as skate from 'skatejs';
 
-export { }
+declare global {
+  // https://www.typescriptlang.org/docs/handbook/jsx.html
+  namespace JSX {
+    interface Element extends skate.HNode {}
+    interface ElementClass extends skate.Component<any> {
+      renderCallback(): JSX.Element
+    }
+
+    interface ElementAttributesProperty<Props extends {}> {
+      // '!': any;
+      readonly _props: Props,
+      // [key:string]:Props
+    }
+    interface IntrinsicAttributes{}
+    interface IntrinsicClassAttributes{}
+
+    interface IntrinsicElements {
+      a: HTMLProps<HTMLAnchorElement>;
+      abbr: HTMLProps<HTMLElement>;
+      address: HTMLProps<HTMLElement>;
+      area: HTMLProps<HTMLAreaElement>;
+      article: HTMLProps<HTMLElement>;
+      aside: HTMLProps<HTMLElement>;
+      audio: HTMLProps<HTMLAudioElement>;
+      b: HTMLProps<HTMLElement>;
+      base: HTMLProps<HTMLBaseElement>;
+      bdi: HTMLProps<HTMLElement>;
+      bdo: HTMLProps<HTMLElement>;
+      big: HTMLProps<HTMLElement>;
+      blockquote: HTMLProps<HTMLElement>;
+      body: HTMLProps<HTMLBodyElement>;
+      br: HTMLProps<HTMLBRElement>;
+      button: HTMLProps<HTMLButtonElement>;
+      canvas: HTMLProps<HTMLCanvasElement>;
+      caption: HTMLProps<HTMLElement>;
+      cite: HTMLProps<HTMLElement>;
+      code: HTMLProps<HTMLElement>;
+      col: HTMLProps<HTMLTableColElement>;
+      colgroup: HTMLProps<HTMLTableColElement>;
+      data: HTMLProps<HTMLElement>;
+      datalist: HTMLProps<HTMLDataListElement>;
+      dd: HTMLProps<HTMLElement>;
+      del: HTMLProps<HTMLElement>;
+      details: HTMLProps<HTMLElement>;
+      dfn: HTMLProps<HTMLElement>;
+      dialog: HTMLProps<HTMLElement>;
+      div: HTMLProps<HTMLDivElement>;
+      dl: HTMLProps<HTMLDListElement>;
+      dt: HTMLProps<HTMLElement>;
+      em: HTMLProps<HTMLElement>;
+      embed: HTMLProps<HTMLEmbedElement>;
+      fieldset: HTMLProps<HTMLFieldSetElement>;
+      figcaption: HTMLProps<HTMLElement>;
+      figure: HTMLProps<HTMLElement>;
+      footer: HTMLProps<HTMLElement>;
+      form: HTMLProps<HTMLFormElement>;
+      h1: HTMLProps<HTMLHeadingElement>;
+      h2: HTMLProps<HTMLHeadingElement>;
+      h3: HTMLProps<HTMLHeadingElement>;
+      h4: HTMLProps<HTMLHeadingElement>;
+      h5: HTMLProps<HTMLHeadingElement>;
+      h6: HTMLProps<HTMLHeadingElement>;
+      head: HTMLProps<HTMLHeadElement>;
+      header: HTMLProps<HTMLElement>;
+      hgroup: HTMLProps<HTMLElement>;
+      hr: HTMLProps<HTMLHRElement>;
+      html: HTMLProps<HTMLHtmlElement>;
+      i: HTMLProps<HTMLElement>;
+      iframe: HTMLProps<HTMLIFrameElement>;
+      img: HTMLProps<HTMLImageElement>;
+      input: HTMLProps<HTMLInputElement>;
+      ins: HTMLProps<HTMLModElement>;
+      kbd: HTMLProps<HTMLElement>;
+      keygen: HTMLProps<HTMLElement>;
+      label: HTMLProps<HTMLLabelElement>;
+      legend: HTMLProps<HTMLLegendElement>;
+      li: HTMLProps<HTMLLIElement>;
+      link: HTMLProps<HTMLLinkElement>;
+      main: HTMLProps<HTMLElement>;
+      map: HTMLProps<HTMLMapElement>;
+      mark: HTMLProps<HTMLElement>;
+      menu: HTMLProps<HTMLElement>;
+      menuitem: HTMLProps<HTMLElement>;
+      meta: HTMLProps<HTMLMetaElement>;
+      meter: HTMLProps<HTMLElement>;
+      nav: HTMLProps<HTMLElement>;
+      noscript: HTMLProps<HTMLElement>;
+      object: HTMLProps<HTMLObjectElement>;
+      ol: HTMLProps<HTMLOListElement>;
+      optgroup: HTMLProps<HTMLOptGroupElement>;
+      option: HTMLProps<HTMLOptionElement>;
+      output: HTMLProps<HTMLElement>;
+      p: HTMLProps<HTMLParagraphElement>;
+      param: HTMLProps<HTMLParamElement>;
+      picture: HTMLProps<HTMLElement>;
+      pre: HTMLProps<HTMLPreElement>;
+      progress: HTMLProps<HTMLProgressElement>;
+      q: HTMLProps<HTMLQuoteElement>;
+      rp: HTMLProps<HTMLElement>;
+      rt: HTMLProps<HTMLElement>;
+      ruby: HTMLProps<HTMLElement>;
+      s: HTMLProps<HTMLElement>;
+      samp: HTMLProps<HTMLElement>;
+      script: HTMLProps<HTMLElement>;
+      section: HTMLProps<HTMLElement>;
+      select: HTMLProps<HTMLSelectElement>;
+      small: HTMLProps<HTMLElement>;
+      source: HTMLProps<HTMLSourceElement>;
+      span: HTMLProps<HTMLSpanElement>;
+      strong: HTMLProps<HTMLElement>;
+      style: HTMLProps<HTMLStyleElement>;
+      sub: HTMLProps<HTMLElement>;
+      summary: HTMLProps<HTMLElement>;
+      sup: HTMLProps<HTMLElement>;
+      table: HTMLProps<HTMLTableElement>;
+      tbody: HTMLProps<HTMLTableSectionElement>;
+      td: HTMLProps<HTMLTableDataCellElement>;
+      textarea: HTMLProps<HTMLTextAreaElement>;
+      tfoot: HTMLProps<HTMLTableSectionElement>;
+      th: HTMLProps<HTMLTableHeaderCellElement>;
+      thead: HTMLProps<HTMLTableSectionElement>;
+      time: HTMLProps<HTMLElement>;
+      title: HTMLProps<HTMLTitleElement>;
+      tr: HTMLProps<HTMLTableRowElement>;
+      track: HTMLProps<HTMLTrackElement>;
+      u: HTMLProps<HTMLElement>;
+      ul: HTMLProps<HTMLUListElement>;
+      "var": HTMLProps<HTMLElement>;
+      video: HTMLProps<HTMLVideoElement>;
+      wbr: HTMLProps<HTMLElement>;
+
+      slot: HTMLProps<HTMLSlotElement> & { name?: string };
+
+      // SVG
+      svg: SVGAttributes;
+
+      circle: SVGAttributes;
+      clipPath: SVGAttributes;
+      defs: SVGAttributes;
+      ellipse: SVGAttributes;
+      feBlend: SVGAttributes;
+      feColorMatrix: SVGAttributes;
+      feComponentTransfer: SVGAttributes;
+      feComposite: SVGAttributes;
+      feConvolveMatrix: SVGAttributes;
+      feDiffuseLighting: SVGAttributes;
+      feDisplacementMap: SVGAttributes;
+      feFlood: SVGAttributes;
+      feGaussianBlur: SVGAttributes;
+      feImage: SVGAttributes;
+      feMerge: SVGAttributes;
+      feMergeNode: SVGAttributes;
+      feMorphology: SVGAttributes;
+      feOffset: SVGAttributes;
+      feSpecularLighting: SVGAttributes;
+      feTile: SVGAttributes;
+      feTurbulence: SVGAttributes;
+      filter: SVGAttributes;
+      foreignObject: SVGAttributes;
+      g: SVGAttributes;
+      image: SVGAttributes;
+      line: SVGAttributes;
+      linearGradient: SVGAttributes;
+      marker: SVGAttributes;
+      mask: SVGAttributes;
+      path: SVGAttributes;
+      pattern: SVGAttributes;
+      polygon: SVGAttributes;
+      polyline: SVGAttributes;
+      radialGradient: SVGAttributes;
+      rect: SVGAttributes;
+      stop: SVGAttributes;
+      symbol: SVGAttributes;
+      text: SVGAttributes;
+      tspan: SVGAttributes;
+      use: SVGAttributes;
+    }
+  }
+}
+
+type Key = string | number;
+type Ref<T> = string | ((instance: T) => any);
+type ComponentState = {} | void;
+
 
 interface SkateHTMLAttributes {
   // dangerouslySetInnerHTML?:DangerouslySetInnerHTML;
@@ -12,12 +196,76 @@ interface HTMLProps<T> extends HTMLAttributes<T>, ClassAttributes<T> {
 }
 
 interface Attributes {
+  key?: Key;
 }
-
 interface ClassAttributes<T> extends Attributes {
+  ref?: Ref<T>;
 }
 
-interface HTMLAttributes<T> extends DOMAttributes<T>,SkateHTMLAttributes {
+interface SVGAttributes {
+		clipPath?:string;
+		cx?:number | string;
+		cy?:number | string;
+		d?:string;
+		dx?:number | string;
+		dy?:number | string;
+		fill?:string;
+		fillOpacity?:number | string;
+		fontFamily?:string;
+		fontSize?:number | string;
+		fx?:number | string;
+		fy?:number | string;
+		gradientTransform?:string;
+		gradientUnits?:string;
+		markerEnd?:string;
+		markerMid?:string;
+		markerStart?:string;
+		offset?:number | string;
+		opacity?:number | string;
+		patternContentUnits?:string;
+		patternUnits?:string;
+		points?:string;
+		preserveAspectRatio?:string;
+		r?:number | string;
+		rx?:number | string;
+		ry?:number | string;
+		spreadMethod?:string;
+		stopColor?:string;
+		stopOpacity?:number | string;
+		stroke?:string;
+		strokeDasharray?:string;
+		strokeLinecap?:string;
+		strokeMiterlimit?:string;
+		strokeOpacity?:number | string;
+		strokeWidth?:number | string;
+		textAnchor?:string;
+		transform?:string;
+		version?:string;
+		viewBox?:string;
+		x1?:number | string;
+		x2?:number | string;
+		x?:number | string;
+		xlinkActuate?:string;
+		xlinkArcrole?:string;
+		xlinkHref?:string;
+		xlinkRole?:string;
+		xlinkShow?:string;
+		xlinkTitle?:string;
+		xlinkType?:string;
+		xmlBase?:string;
+		xmlLang?:string;
+		xmlSpace?:string;
+		y1?:number | string;
+		y2?:number | string;
+		y?:number | string;
+	}
+
+	interface PathAttributes {
+		d:string;
+	}
+
+
+interface HTMLAttributes<T> extends DOMAttributes<T>, SkateHTMLAttributes {
   slot?: string,
 
   // Standard HTML Attributes
@@ -374,138 +622,3 @@ type UIEventHandler<T> = EventHandler<UIEvent<T>>;
 type WheelEventHandler<T> = EventHandler<WheelEvent<T>>;
 type AnimationEventHandler = EventHandler<AnimationEvent>;
 type TransitionEventHandler = EventHandler<TransitionEvent>;
-
-
-declare global {
-  // https://www.typescriptlang.org/docs/handbook/jsx.html
-  namespace JSX {
-    interface ElementClass extends skate.Component {
-      // renderCallback?(): JSX.Element; // TODO temp
-    }
-
-    interface ElementAttributesProperty {
-      '': any;
-    }
-
-    interface Element {
-    }
-
-    interface IntrinsicElements {
-      a: HTMLProps<HTMLAnchorElement>;
-      abbr: HTMLProps<HTMLElement>;
-      address: HTMLProps<HTMLElement>;
-      area: HTMLProps<HTMLAreaElement>;
-      article: HTMLProps<HTMLElement>;
-      aside: HTMLProps<HTMLElement>;
-      audio: HTMLProps<HTMLAudioElement>;
-      b: HTMLProps<HTMLElement>;
-      base: HTMLProps<HTMLBaseElement>;
-      bdi: HTMLProps<HTMLElement>;
-      bdo: HTMLProps<HTMLElement>;
-      big: HTMLProps<HTMLElement>;
-      blockquote: HTMLProps<HTMLElement>;
-      body: HTMLProps<HTMLBodyElement>;
-      br: HTMLProps<HTMLBRElement>;
-      button: HTMLProps<HTMLButtonElement>;
-      canvas: HTMLProps<HTMLCanvasElement>;
-      caption: HTMLProps<HTMLElement>;
-      cite: HTMLProps<HTMLElement>;
-      code: HTMLProps<HTMLElement>;
-      col: HTMLProps<HTMLTableColElement>;
-      colgroup: HTMLProps<HTMLTableColElement>;
-      data: HTMLProps<HTMLElement>;
-      datalist: HTMLProps<HTMLDataListElement>;
-      dd: HTMLProps<HTMLElement>;
-      del: HTMLProps<HTMLElement>;
-      details: HTMLProps<HTMLElement>;
-      dfn: HTMLProps<HTMLElement>;
-      dialog: HTMLProps<HTMLElement>;
-      div: HTMLProps<HTMLDivElement>;
-      dl: HTMLProps<HTMLDListElement>;
-      dt: HTMLProps<HTMLElement>;
-      em: HTMLProps<HTMLElement>;
-      embed: HTMLProps<HTMLEmbedElement>;
-      fieldset: HTMLProps<HTMLFieldSetElement>;
-      figcaption: HTMLProps<HTMLElement>;
-      figure: HTMLProps<HTMLElement>;
-      footer: HTMLProps<HTMLElement>;
-      form: HTMLProps<HTMLFormElement>;
-      h1: HTMLProps<HTMLHeadingElement>;
-      h2: HTMLProps<HTMLHeadingElement>;
-      h3: HTMLProps<HTMLHeadingElement>;
-      h4: HTMLProps<HTMLHeadingElement>;
-      h5: HTMLProps<HTMLHeadingElement>;
-      h6: HTMLProps<HTMLHeadingElement>;
-      head: HTMLProps<HTMLHeadElement>;
-      header: HTMLProps<HTMLElement>;
-      hgroup: HTMLProps<HTMLElement>;
-      hr: HTMLProps<HTMLHRElement>;
-      html: HTMLProps<HTMLHtmlElement>;
-      i: HTMLProps<HTMLElement>;
-      iframe: HTMLProps<HTMLIFrameElement>;
-      img: HTMLProps<HTMLImageElement>;
-      input: HTMLProps<HTMLInputElement>;
-      ins: HTMLProps<HTMLModElement>;
-      kbd: HTMLProps<HTMLElement>;
-      keygen: HTMLProps<HTMLElement>;
-      label: HTMLProps<HTMLLabelElement>;
-      legend: HTMLProps<HTMLLegendElement>;
-      li: HTMLProps<HTMLLIElement>;
-      link: HTMLProps<HTMLLinkElement>;
-      main: HTMLProps<HTMLElement>;
-      map: HTMLProps<HTMLMapElement>;
-      mark: HTMLProps<HTMLElement>;
-      menu: HTMLProps<HTMLElement>;
-      menuitem: HTMLProps<HTMLElement>;
-      meta: HTMLProps<HTMLMetaElement>;
-      meter: HTMLProps<HTMLElement>;
-      nav: HTMLProps<HTMLElement>;
-      noscript: HTMLProps<HTMLElement>;
-      object: HTMLProps<HTMLObjectElement>;
-      ol: HTMLProps<HTMLOListElement>;
-      optgroup: HTMLProps<HTMLOptGroupElement>;
-      option: HTMLProps<HTMLOptionElement>;
-      output: HTMLProps<HTMLElement>;
-      p: HTMLProps<HTMLParagraphElement>;
-      param: HTMLProps<HTMLParamElement>;
-      picture: HTMLProps<HTMLElement>;
-      pre: HTMLProps<HTMLPreElement>;
-      progress: HTMLProps<HTMLProgressElement>;
-      q: HTMLProps<HTMLQuoteElement>;
-      rp: HTMLProps<HTMLElement>;
-      rt: HTMLProps<HTMLElement>;
-      ruby: HTMLProps<HTMLElement>;
-      s: HTMLProps<HTMLElement>;
-      samp: HTMLProps<HTMLElement>;
-      script: HTMLProps<HTMLElement>;
-      section: HTMLProps<HTMLElement>;
-      select: HTMLProps<HTMLSelectElement>;
-      small: HTMLProps<HTMLElement>;
-      source: HTMLProps<HTMLSourceElement>;
-      span: HTMLProps<HTMLSpanElement>;
-      strong: HTMLProps<HTMLElement>;
-      style: HTMLProps<HTMLStyleElement>;
-      sub: HTMLProps<HTMLElement>;
-      summary: HTMLProps<HTMLElement>;
-      sup: HTMLProps<HTMLElement>;
-      table: HTMLProps<HTMLTableElement>;
-      tbody: HTMLProps<HTMLTableSectionElement>;
-      td: HTMLProps<HTMLTableDataCellElement>;
-      textarea: HTMLProps<HTMLTextAreaElement>;
-      tfoot: HTMLProps<HTMLTableSectionElement>;
-      th: HTMLProps<HTMLTableHeaderCellElement>;
-      thead: HTMLProps<HTMLTableSectionElement>;
-      time: HTMLProps<HTMLElement>;
-      title: HTMLProps<HTMLTitleElement>;
-      tr: HTMLProps<HTMLTableRowElement>;
-      track: HTMLProps<HTMLTrackElement>;
-      u: HTMLProps<HTMLElement>;
-      ul: HTMLProps<HTMLUListElement>;
-      "var": HTMLProps<HTMLElement>;
-      video: HTMLProps<HTMLVideoElement>;
-      wbr: HTMLProps<HTMLElement>;
-
-      slot: HTMLProps<HTMLSlotElement> & { name?: string };
-    }
-  }
-}
