@@ -33,7 +33,7 @@ class Counter extends Component<Props> {
     // By separating the strings (and not using template literals or string
     // concatenation) it ensures the strings are diffed indepenedently. If
     // you select "Count" with your mouse, it will not deselect whenr endered.
-    return <div>Count {this.count}</div>;
+    return <div onClick={console.log}>Count {this.count}</div>;
   }
 }
 
