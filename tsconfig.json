@@ -16,8 +16,8 @@
     "pretty": true,
     "skipLibCheck": true,
     "typeRoots": [
-      // "node_modules/@types",
-      "./manual_definitions"
+      "node_modules/@types",
+      "manual_definitions"
     ],
     "types":[
       "skatejs",

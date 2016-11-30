@@ -1,7 +1,10 @@
 declare module '*.html';
+declare module '*.scss';
+declare module '*.css';
 
 // Skate
 declare module 'skatejs-web-components';
+declare module 'core-js';
 
 
 // Custom Elements

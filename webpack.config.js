@@ -125,6 +125,11 @@ module.exports = ( env ) => {
           )
         },
         {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          use: [ 'to-string-loader', 'css-loader', 'sass-loader' ]
+        },
+        {
           test: /\.css$/,
           // only use CSS modules and CSS next on our CSS
           exclude: /node_modules/,
@@ -281,9 +286,9 @@ module.exports = ( env ) => {
       new HtmlWebpackPlugin( {
         template: resolve( 'src', 'index.html' ),
         // reverse order so we get [2:'polyfills',1:'vendor',0:'main']
-        chunksSortMode: (a,b) => {
-          return  b.id - a.id;
-        },
+        // chunksSortMode: (a,b) => {
+        //   return  b.id - a.id;
+        // },
         // https://github.com/kangax/html-minifier#options-quick-reference
         // will minify html
         minify: ifProd(
