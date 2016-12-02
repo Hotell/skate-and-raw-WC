@@ -1,7 +1,9 @@
 import { h, Component } from 'skatejs';
 import styles from './Card.scss';
 
-export class Card extends Component {
+interface CardProps{}
+
+export class Card extends Component<CardProps> {
   static get is() { return 'bl-card' }
 
   renderCallback() {

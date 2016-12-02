@@ -1,7 +1,7 @@
 import { h, Component, prop } from 'skatejs';
 import { Button } from '../Button';
 
-class Demo extends Component {
+class Demo extends Component<void> {
   static get is() { return 'demo-buttons' }
   static get props(){
     return {

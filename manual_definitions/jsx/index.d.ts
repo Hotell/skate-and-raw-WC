@@ -6,7 +6,7 @@ declare global {
   namespace JSX {
     interface Element extends skate.HNode {}
     interface ElementClass extends skate.Component<any> {
-      renderCallback(): JSX.Element
+      // renderCallback(): JSX.Element
     }
 
     interface ElementAttributesProperty<Props extends {}> {

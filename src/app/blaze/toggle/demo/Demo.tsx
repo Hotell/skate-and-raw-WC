@@ -3,7 +3,7 @@ import { Toggle } from '../Toggle';
 
 import styles from './Demo.scss';
 
-class Demo extends Component {
+class Demo extends Component<void> {
   static get is() {return 'demo-bl-toggle'};
 
   renderCallback() {

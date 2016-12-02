@@ -16,8 +16,7 @@ const ToggleTypes = {
   error: 'error'
 };
 
-export class Toggle extends Component {
-  _props: ToggleProps;
+export class Toggle extends Component<ToggleProps> {
   static get is(){ return 'bl-toggle'}
   static get props(){
     return {

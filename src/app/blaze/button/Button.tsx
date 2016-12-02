@@ -2,12 +2,6 @@ import { h, Component, prop } from 'skatejs';
 import styles from './Button.scss';
 import { css } from '../../ui-fabric/utils/css';
 
-// public
-interface ButtonProps extends JSX.HTMLProps<HTMLButtonElement | HTMLAnchorElement | Button> {
-  disabled?: boolean,
-  type?: string,
-}
-
 const ButtonTypes = {
   brand: 'brand',
   info: 'info',
@@ -16,8 +10,16 @@ const ButtonTypes = {
   error: 'error'
 };
 
-export class Button extends Component {
-  _props: ButtonProps;
+type ButtonType = typeof ButtonTypes;
+
+
+// public
+interface ButtonProps extends JSX.HTMLProps<HTMLButtonElement | HTMLAnchorElement | any> {
+  disabled?: boolean,
+  type?: keyof ButtonType,
+}
+
+export class Button extends Component<ButtonProps> {
   static get is(){ return 'bl-button' }
   static get props() {
     return {

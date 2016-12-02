@@ -15,11 +15,17 @@
     "jsxFactory": "h",
     "pretty": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "manual_definitions/*"
+      ]
+    },
     "typeRoots": [
-      "node_modules/@types",
+      // "node_modules/@types",
       "manual_definitions"
     ],
-    "types":[
+    "types": [
       "skatejs",
       "jsx"
     ],

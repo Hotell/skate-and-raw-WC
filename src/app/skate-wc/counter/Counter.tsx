@@ -4,8 +4,7 @@ type Props = {
   count?: number
 }
 const sym = Symbol();
-class Counter extends Component {
-  _props: Props;
+class Counter extends Component<Props> {
   count = 0;
   static get is() { return 'my-counter' }
   static get props() {

@@ -7,8 +7,7 @@ interface ModalProps {
   isOpen?: boolean,
   onModalClose?: Function,
 }
-export class Modal extends Component {
-  _props: ModalProps;
+export class Modal extends Component<ModalProps> {
   static get is() { return 'bl-modal' }
   static get props() {
     return {

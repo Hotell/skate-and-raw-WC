@@ -1,7 +1,7 @@
 import { Component, h, prop, define } from 'skatejs';
 
 // NOTE: This api doesn't work without __extends override
-class XCounter extends Component {
+class XCounter extends Component<{count?:number}> {
 
   static get is() { return 'x-counter' }
   static get props() {

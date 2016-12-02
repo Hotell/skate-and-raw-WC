@@ -4,7 +4,7 @@ import { Button } from '../../button/Button';
 
 import styles from './Demo.scss';
 
-export class Demo extends Component {
+export class Demo extends Component<void> {
   static get is() { return 'demo-bl-modal' }
   static get props(){
     return {

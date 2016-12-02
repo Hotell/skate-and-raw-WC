@@ -3,7 +3,7 @@ import styles from './Button.scss';
 import { css } from '../utils/css';
 import { getId } from '../utils/object';
 
-export interface IButtonProps extends JSX.HTMLProps<HTMLButtonElement | HTMLAnchorElement | Button> {
+export interface IButtonProps extends JSX.HTMLProps<HTMLButtonElement | HTMLAnchorElement | any> {
   /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
@@ -84,8 +84,7 @@ export interface IButtonState {
   ariaDescriptionId?: string;
 }
 
-export class Button extends Component {
-  _props: IButtonProps;
+export class Button extends Component<IButtonProps> {
   static get is() { return 'uif-button'}
   static get props(){
     return {

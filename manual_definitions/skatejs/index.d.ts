@@ -29,7 +29,7 @@ export class Component<Props> extends HTMLElement implements ComponentLifecycle<
   static readonly observedAttributes: string[];
 
   // SkateJS
-  abstract renderCallback(): JSX.Element
+  abstract renderCallback(): JSX.Element | JSX.Element[] | null
 }
 
 export function define<C>(name: string, component: C): C;
@@ -58,7 +58,7 @@ type HOut = JSX.Element;
 type HBuilder<Props> = (
   nodeName: string | ComponentConstructor<Props>,
   attributes?: JSX.HTMLAttributes & JSX.SVGAttributes & {[propName: string]: any},
-  ...children?: (JSX.Element|JSX.Element[]|string)[]
+  ...children?: (JSX.Element|JSX.Element[]|string)[] | null
 ) => HOut;
 
 export interface HNode {

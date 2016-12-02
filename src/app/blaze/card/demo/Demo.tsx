@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import styles from './Demo.scss';
 import { Card } from '../Card';
 
-export class Demo extends Component {
+export class Demo extends Component<void> {
   static get is() { return 'demo-bl-card' }
 
   renderCallback() {
