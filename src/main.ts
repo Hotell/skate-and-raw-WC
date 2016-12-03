@@ -12,7 +12,7 @@ const App = () => (`
     <fieldset>
       <legend><h2>Blaze RAW</h2></legend>
       <demo-blr-buttons></demo-blr-buttons>
-      <!--<demo-bl-toggle></demo-bl-toggle>-->
+      <demo-blr-toggle></demo-blr-toggle>
       <!--<demo-bl-modal></demo-bl-modal>-->
     </fieldset>
     <fieldset>

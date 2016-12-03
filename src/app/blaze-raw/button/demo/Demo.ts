@@ -1,4 +1,4 @@
-const template = `
+const template = () => (`
   <div>
         <blr-button
           disabled
@@ -8,14 +8,14 @@ const template = `
           type="brand"
         >Click me</blr-button>
       </div>
-`
+`);
 
 class Demo extends HTMLElement {
   static get is() { return 'demo-blr-buttons'}
   constructor(){
     super();
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot.innerHTML = template;
+    this.shadowRoot.innerHTML = template();
   }
 }
 
