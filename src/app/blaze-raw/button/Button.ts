@@ -1,5 +1,5 @@
 import { css } from '../../ui-fabric/utils/css';
-import { attachShadow, createBindings } from '../utils';
+import { attachShadow, createBindings, interpolateTemplate } from '../utils';
 
 import template from './Button.html';
 import style from './Button.scss';
@@ -21,6 +21,7 @@ interface ButtonProps {
   type?: ButtonTypeLiteral,
 }
 
+const dom = interpolateTemplate( template, { css: style } );
 
 export class Button extends HTMLElement implements ButtonProps {
   static get is(){ return 'blr-button' }
@@ -57,7 +58,7 @@ export class Button extends HTMLElement implements ButtonProps {
   }
   constructor(){
     super();
-    attachShadow( this, template, style );
+    attachShadow( this, dom);
     this.bindings = createBindings( this, { button: 'button' } ) as any;
   }
 

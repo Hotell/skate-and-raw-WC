@@ -122,3 +122,9 @@ interface Event {
 interface Document {
   createElement(tagName: "slot"): HTMLSlotElement;
 }
+
+declare const ShadyCSS: ShadyCSS;
+interface ShadyCSS {
+  prepareTemplate( template: HTMLTemplateElement, name: string ): void,
+  applyStyle(instance:HTMLElement),
+}
