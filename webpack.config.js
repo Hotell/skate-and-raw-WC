@@ -29,7 +29,7 @@ const ProgressBarPlugin = require( 'progress-bar-webpack-plugin' );
  * We need this for handling /assets/*
  * https://github.com/kevlened/copy-webpack-plugin
  */
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 
 // PostCSS plugins
 /**
@@ -65,6 +65,7 @@ module.exports = ( env ) => {
     output: {
       filename: '[name].[hash].js',
       path: resolve( __dirname, 'dist' ),
+      // publicPath: '/',
       // Include comments with information about the modules.
       pathinfo: ifNotProd(),
     },
@@ -79,13 +80,37 @@ module.exports = ( env ) => {
      * See: https://webpack.js.org/configuration/devtool/#devtool
      * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
      */
-    devtool: ifProd( 'source-map', 'cheap-module-source-map' ),
+    devtool: ifProd( 'source-map', 'source-map' ),
 
     module: {
       rules: [
+        // {
+        //   test: /\.html$/,
+        //   use: ['raw-loader'],
+        // },
         {
           test: /\.html$/,
-          use: ['raw-loader'],
+          exclude: /index\.html/,
+          use: [
+            // {
+            //   loader: 'file-loader',
+            //   query: {
+            //     name: '[name].[ext]'
+            //   }
+            // },
+            // {
+            //   loader: 'extract-loader',
+            //   query: {
+            //     publicPath: '/'
+            //   }
+            // },
+            { loader: 'html-loader',
+              query: {
+                // interpolate: true,
+                exportAsEs6Default: true,
+                // root:
+          } }
+          ],
         },
         // Typescript
         {
@@ -154,7 +179,7 @@ module.exports = ( env ) => {
                 loader: 'postcss-loader',
                 // @TODO allow this instead of legacy loader plugin config (webpack.LoaderOptionsPlugin) when https://github.com/postcss/postcss-loader/issues/99 is fixed
                 /**
-                query: {
+                 query: {
                   plugins: () => [
                     // Allow future CSS features to be used, also
                     // auto-prefixes the CSS...
@@ -165,7 +190,7 @@ module.exports = ( env ) => {
                     postcssReporter()
                   ]
                 }
-                */
+                 */
               }
             ],
             ExtractTextPlugin.extract( {
@@ -337,7 +362,7 @@ module.exports = ( env ) => {
       } ) ),
 
       ifProd( new webpack.optimize.CommonsChunkPlugin( {
-        names: ['polyfills', 'vendor']
+        names: [ 'polyfills', 'vendor' ]
       } ) ),
 
       ifProd( new webpack.optimize.CommonsChunkPlugin( {
