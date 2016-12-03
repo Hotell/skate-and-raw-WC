@@ -1,7 +1,6 @@
 import template from './Toggle.html';
 import styles from './Toggle.scss';
-import { interpolateTemplate, attachShadow, createBindings } from '../utils';
-import { css } from '../../ui-fabric/utils/css';
+import { interpolateTemplate, attachShadow, createBindings, handleTypeElementClasses } from '../utils';
 
 
 export interface ToggleProps {
@@ -9,18 +8,10 @@ export interface ToggleProps {
   checked?: boolean,
   type?: string,
 }
-const ToggleTypes = {
-  brand: 'brand',
-  info: 'info',
-  warning: 'warning',
-  success: 'success',
-  error: 'error'
-};
-
-const dom = interpolateTemplate( template, { css: styles } );
 
 export class Toggle extends HTMLElement implements ToggleProps {
   static get is() { return 'blr-toggle' }
+  static get template(){ return interpolateTemplate( template, { css: styles } ) }
   static get observedAttributes() {
     return ['type','disabled','checked'];
   }
@@ -67,7 +58,7 @@ export class Toggle extends HTMLElement implements ToggleProps {
 
   constructor(){
     super();
-    attachShadow(this,dom);
+    attachShadow(this,Toggle.template);
     this.bindings = createBindings( this, { input: 'input', label: 'label' } ) as any;
     this.bindings.input.addEventListener('change',this.handleChecked.bind(this));
   }
@@ -109,16 +100,7 @@ export class Toggle extends HTMLElement implements ToggleProps {
   private render(){
     const { type, disabled, checked, bindings } = this;
     const { input, label } = bindings;
-    const className = css(
-      'c-toggle',
-      {
-        'c-toggle--brand': type === ToggleTypes.brand,
-        'c-toggle--info': type === ToggleTypes.info,
-        'c-toggle--success': type === ToggleTypes.success,
-        'c-toggle--warning': type === ToggleTypes.warning,
-        'c-toggle--error': type === ToggleTypes.error,
-      }
-    );
+    const className = handleTypeElementClasses('toggle',type);
     label.className = className;
     input.disabled = disabled;
     input.checked = checked;

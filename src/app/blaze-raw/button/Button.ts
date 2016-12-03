@@ -1,30 +1,16 @@
-import { css } from '../../ui-fabric/utils/css';
-import { attachShadow, createBindings, interpolateTemplate } from '../utils';
-
+import { attachShadow, createBindings, interpolateTemplate, handleTypeElementClasses, TypeLiteral } from '../utils';
 import template from './Button.html';
-import style from './Button.scss';
-
-const ButtonTypes = {
-  brand: 'brand',
-  info: 'info',
-  warning: 'warning',
-  success: 'success',
-  error: 'error'
-};
-
-type ButtonType = typeof ButtonTypes;
-type ButtonTypeLiteral = keyof ButtonType;
+import styles from './Button.scss';
 
 // public
 interface ButtonProps {
   disabled?: boolean,
-  type?: ButtonTypeLiteral,
+  type?: TypeLiteral,
 }
-
-const dom = interpolateTemplate( template, { css: style } );
 
 export class Button extends HTMLElement implements ButtonProps {
   static get is(){ return 'blr-button' }
+  static get template(){ return interpolateTemplate( template, { css: styles } ) }
   // Tells the element which attributes to observer for changes
   // This is a feature added by Custom Elements
   static get observedAttributes() {
@@ -48,9 +34,9 @@ export class Button extends HTMLElement implements ButtonProps {
     this.render();
   }
 
-  private _type = '' as ButtonTypeLiteral;
+  private _type = '' as TypeLiteral;
   get type() { return this._type }
-  set type( value: ButtonTypeLiteral ) {
+  set type( value: TypeLiteral ) {
     this._type = value;
     // reflect to attribute
     this.setAttribute( 'type', value );
@@ -58,7 +44,7 @@ export class Button extends HTMLElement implements ButtonProps {
   }
   constructor(){
     super();
-    attachShadow( this, dom);
+    attachShadow( this, Button.template);
     this.bindings = createBindings( this, { button: 'button' } ) as any;
   }
 
@@ -84,16 +70,7 @@ export class Button extends HTMLElement implements ButtonProps {
   private render(){
     const { type, disabled, bindings } = this;
     const { button } = bindings;
-    const className = css(
-      'c-button',
-      {
-        'c-button--brand': type === ButtonTypes.brand,
-        'c-button--info': type === ButtonTypes.info,
-        'c-button--success': type === ButtonTypes.success,
-        'c-button--warning': type === ButtonTypes.warning,
-        'c-button--error': type === ButtonTypes.error,
-      }
-    );
+    const className = handleTypeElementClasses('button',type);
     button.className = className;
     button.disabled = disabled;
   }

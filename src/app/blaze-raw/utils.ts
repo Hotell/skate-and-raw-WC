@@ -1,3 +1,5 @@
+import { css } from '../ui-fabric/utils/css';
+
 export function importTemplate( templateString: string) {
   const wrapper = document.createElement('div');
   // this will parse the string
@@ -36,4 +38,28 @@ export function interpolateTemplate(template:string,bindings:Object){
     // console.log('====', arguments, bindings );
     return bindings[ p2 ];
   } )
+}
+
+const Types = {
+  brand: 'brand',
+  info: 'info',
+  warning: 'warning',
+  success: 'success',
+  error: 'error'
+};
+export type Type = typeof Types;
+export type TypeLiteral = keyof Type;
+
+
+export function handleTypeElementClasses(baseName:string,type:string): string{
+  return css(
+    `c-${baseName}`,
+    {
+      [`c-${baseName}--brand`]: type === Types.brand,
+      [`c-${baseName}--info`]: type === Types.info,
+      [`c-${baseName}--success`]: type === Types.success,
+      [`c-${baseName}--warning`]: type === Types.warning,
+      [`c-${baseName}--error`]: type === Types.error,
+    }
+  );
 }
