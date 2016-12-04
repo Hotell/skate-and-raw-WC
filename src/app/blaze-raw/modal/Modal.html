@@ -1,0 +1,22 @@
+<template id="blr-modal">
+  <style>${css}</style>
+  <div class="c-overlay c-overlay--fullpage"></div>
+  <div tabindex={0} class="o-modal">
+    <blr-card>
+         <blr-button
+           slot="dismiss"
+           onClick={this.handleModalClose}>
+           x
+         </blr-button>
+         <div slot="title">
+           <slot name="title"></slot>
+         </div>
+         <div slot="body">
+           <slot></slot>
+         </div>
+         <div slot="footer">
+           <slot name="footer"></slot>
+         </div>
+       </blr-card>
+  </div>
+</template>

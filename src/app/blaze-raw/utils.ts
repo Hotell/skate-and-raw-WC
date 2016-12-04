@@ -27,7 +27,7 @@ export function attachShadow(instance: HTMLElement,template=''){
   instance.shadowRoot.appendChild(dom);
   ShadyCSS.applyStyle(instance);
 }
-export function fire( instance: HTMLElement, eventName: string, customPayload: Object ) {
+export function fire( instance: HTMLElement, eventName: string, customPayload = {} ) {
   /* do any other updates we need */
   instance.dispatchEvent(
     new CustomEvent( eventName, { detail: customPayload } )

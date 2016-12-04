@@ -14,7 +14,7 @@ const App = () => (`
       <demo-blr-buttons></demo-blr-buttons>
       <demo-blr-toggle></demo-blr-toggle>
       <demo-blr-card></demo-blr-card>
-      <!--<demo-bl-modal></demo-bl-modal>-->
+      <demo-blr-modal></demo-blr-modal>
     </fieldset>
     <fieldset>
       <legend><h2>Blaze</h2></legend>
