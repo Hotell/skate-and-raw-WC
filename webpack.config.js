@@ -104,12 +104,13 @@ module.exports = ( env ) => {
             //     publicPath: '/'
             //   }
             // },
-            { loader: 'html-loader',
+            {
+              loader: 'html-loader',
               query: {
                 // interpolate: true,
                 exportAsEs6Default: true,
-                // root:
-          } }
+              }
+            }
           ],
         },
         // Typescript

@@ -13,12 +13,14 @@ const App = () => (`
       <legend><h2>Blaze RAW</h2></legend>
       <demo-blr-buttons></demo-blr-buttons>
       <demo-blr-toggle></demo-blr-toggle>
+      <demo-blr-card></demo-blr-card>
       <!--<demo-bl-modal></demo-bl-modal>-->
     </fieldset>
     <fieldset>
       <legend><h2>Blaze</h2></legend>
       <demo-bl-buttons></demo-bl-buttons>
       <demo-bl-toggle></demo-bl-toggle>
+      <demo-bl-card></demo-bl-card>
       <demo-bl-modal></demo-bl-modal>
     </fieldset>
 

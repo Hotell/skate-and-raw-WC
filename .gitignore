@@ -1,5 +1,7 @@
 # generated files
 ts-output
+*.js
+*.jsx
 
 # Logs
 logs
