@@ -14,9 +14,10 @@ class Modal extends HTMLElement{
   static get observedAttributes() {
     return ['is-open'];
   }
-  private bindings: {closeButton: HTMLButtonElement, modalWrapper: HTMLDivElement} = {
+  private bindings: {closeButton: HTMLButtonElement, modalWrapper: HTMLDivElement, overlay: HTMLDivElement} = {
     closeButton: null,
     modalWrapper: null,
+    overlay: null,
   }
 
   private _isOpen = false;
@@ -29,13 +30,15 @@ class Modal extends HTMLElement{
     if(value === false){
       this.removeAttribute('is-open')
     }
+    this.render();
   }
   constructor() {
     super();
     attachShadow(this, Modal.template)
     this.bindings = createBindings( this, {
-      closeButton: 'button',
-      modalWrapper: '.o-modal'
+      closeButton: '#close-btn',
+      modalWrapper: '#modal',
+      overlay: '#overlay'
     } ) as any;
     this.bindings.closeButton.addEventListener('click',this.handleModalClose.bind(this));
     this.bindings.modalWrapper.addEventListener('keydown',this.handleEsc.bind(this));
@@ -45,9 +48,9 @@ class Modal extends HTMLElement{
   }
   attributeChangedCallback(attrName: string, oldVal: any, newVal: any) {
     if (attrName === 'is-open') {
-      const isOpen = this.hasAttribute('checked');
+      const isOpen = this.hasAttribute(attrName);
       if (this[attrName] !== isOpen) {
-        this[attrName] = isOpen;
+        this.isOpen = isOpen;
       }
     }
   }
@@ -59,11 +62,20 @@ class Modal extends HTMLElement{
   }
   private handleModalClose() {
     this.isOpen = !this.isOpen;
+    this.render();
     fire(this, 'modalClose')
   }
   private render(){
+    this.toggleModalVisibility()
     if ( this.isOpen ) {
       this.bindings.modalWrapper.focus();
     }
   }
+  private toggleModalVisibility(){
+    const isHidden = !this.isOpen;
+    this.bindings.overlay.hidden = isHidden;
+    this.bindings.modalWrapper.hidden = isHidden;
+  }
 }
+
+customElements.define(Modal.is,Modal);
