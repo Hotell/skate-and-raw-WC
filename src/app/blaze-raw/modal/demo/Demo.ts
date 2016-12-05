@@ -1,3 +1,5 @@
+import { Modal } from '../Modal';
+
 class Demo extends HTMLElement {
   static get is() { return 'demo-blr-modal' }
   static get template(){
@@ -20,7 +22,7 @@ class Demo extends HTMLElement {
   private bindings: {
     modalToggleBtn:HTMLButtonElement,
     modalCloseBtn:HTMLButtonElement,
-    modalRef: HTMLElement,
+    modalRef: Modal,
   } = {
     modalToggleBtn: null,
     modalCloseBtn: null,
@@ -34,11 +36,11 @@ class Demo extends HTMLElement {
 
     this.bindings.modalToggleBtn = this.shadowRoot.querySelector('#modal-toggle') as HTMLButtonElement;
     this.bindings.modalCloseBtn = this.shadowRoot.querySelector('#modal-close') as HTMLButtonElement
-    this.bindings.modalRef = this.shadowRoot.querySelector('blr-modal') as HTMLElement;
+    this.bindings.modalRef = this.shadowRoot.querySelector('blr-modal') as Modal;
 
     this.bindings.modalToggleBtn.addEventListener('click',this.toggleModal.bind(this));
     this.bindings.modalCloseBtn.addEventListener('click',this.toggleModal.bind(this));
-    this.bindings.modalRef.addEventListener('modalClose',this.toggleModal.bind(this));
+    this.bindings.modalRef.addEventListener(Modal.events.modalClose, this.toggleModal.bind(this));
   }
   toggleModal(){
     console.log( 'toggleModal' );

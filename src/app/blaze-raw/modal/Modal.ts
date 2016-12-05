@@ -8,9 +8,14 @@ interface ModalProps {
   onModalClose?: Function,
 }
 
-class Modal extends HTMLElement{
+export class Modal extends HTMLElement{
   static get is() { return 'blr-modal' }
   static get template() { return interpolateTemplate(template, {css: styles}) }
+  static get events(){
+   return {
+     modalClose: 'modalClose',
+   }
+  }
   static get observedAttributes() {
     return ['is-open'];
   }
@@ -63,7 +68,7 @@ class Modal extends HTMLElement{
   private handleModalClose() {
     this.isOpen = !this.isOpen;
     this.render();
-    fire(this, 'modalClose')
+    fire(this, Modal.events.modalClose)
   }
   private render(){
     this.toggleModalVisibility()
